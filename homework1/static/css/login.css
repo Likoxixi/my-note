@@ -1,0 +1,13 @@
+#app{
+    text-align: center;
+}
+.account_warn,.pwd_warn{
+    position: relative;
+    font-size: 12px;
+    color: red;
+}
+input{
+    width: 300px;
+    height: 30px;
+    margin-top: 30px;
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/login.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="/js/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>登录</h2>
+        <form @submit.prevent="onSubmit">
+            <div>
+                <label for="account" class="account_wrapper">
+                    <input type="text" id="account" name="account" v-model="account" @blur="accountVerify">
+                </label>
+            </div>
+            <span v-html="account_warn" class="account_warn"></span>
+
+            <div><label for="pwd"><input type="password" id="pwd" name="pwd" v-model="password"></label></div>
+            <span v-html="pwd_warn" class="pwd_warn"></span>
+
+
+            <p><input type="submit"></p>
+        </form>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                account: "",
+                password: "",
+                account_warn: "",
+                pwd_warn: "",
+            },
+            methods: {
+                onSubmit() {
+                    this.accountVerify();
+                    this.pwdVerify();
+                    if (!this.password) {
+                        this.pwd_warn = "密码不能为空";
+                        return false;
+                    }
+                    else if (!this.accountVerify() || !this.pwdVerify()) {
+                        this.pwd_warn = "账号或密码错误";
+                        return false;
+                    }
+                    else {
+                        axios.post("")
+
+                    }
+                    return false;
+
+                },
+                accountVerify() {
+                    let regx = /^[0-9a-zA-Z_]{6,12}$/
+                    if (!regx.test(this.account)) {
+                        this.account_warn = "账号格式错误，格式包含6-12位字母数字或下划线";
+                        return false;
+                    }
+                    else {
+                        this.account_warn = "";
+                        return true;
+                    }
+                },
+                pwdVerify() {
+                    let regx = /^[a-zA-Z0-9]{8,}$/
+                    if (!regx.test(this.password)) {
+                        this.pwd_warn = "密码的长度不能小于8位";
+                        return false;
+                    }
+                    else {
+                        this.pwd_warn = "";
+                        return true;
+                    }
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "my-note",
+  "version": "1.0.0",
+  "description": "note",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Likoxixi/my-note.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Likoxixi/my-note/issues"
+  },
+  "homepage": "https://github.com/Likoxixi/my-note#readme"
+}
