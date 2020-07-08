@@ -12,7 +12,7 @@ const Koa = require("koa"),
     
     session=require("koa-session");
 
-const login=require("./router/login")
+const login=require("./router/login");
 
 
 const app = new Koa();

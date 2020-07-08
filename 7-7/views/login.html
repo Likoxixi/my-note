@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会员登录</title>
+</head>
+
+<body>
+    <div>
+
+        <form>
+
+            <p>用户名：<input type="text" name="username" id="username" /><span></span></p>
+            <p>密码：<input type="text" name="pwd" id="pwd" /><span></span></p>
+            <p><input type="submit" value="登录"></p>
+            <p><a href="member/reg">注册</a></p>
+
+        </form>
+
+
+
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+
+        function checkUserName() {
+
+            let regx = /^[A-Z]{5}$/
+            let username = $("#username").val()
+
+            if (!regx.test(username)) {
+
+                $("#username").next().html('用户名填写有误！')
+                
+                return false
+
+            } else {
+                $("#username").next().html('')
+                return true
+            }
+        }
+
+
+
+        $(function () {
+
+            let regx = /^[A-Z]{5}$/
+
+            //监听用户名失去焦点事件
+            $("#username").blur(function () {
+
+                checkUserName()
+
+            })
+
+
+            //监听表单提交
+            $("form").submit(() => {
+
+                let usernameCheckRes = checkUserName()
+
+                let pwd = $("#pwd").val()
+                let username = $("#username").val()
+
+
+                if (!usernameCheckRes || !regx.test(pwd)) {
+
+                    alert('用户名或者密码有误')
+
+                    return false
+
+                } else {
+
+                    $.post('loginDo', { username, pwd }, (res) => {
+
+
+                        if (res == 'success'){ //登录成功
+
+                            //跳转到后台首页
+                            window.location.href="../admin"
+
+                        } else {
+
+                            alert('登录失败，请检查！')
+
+                        }
+
+                    })
+
+                }
+
+                return false
+
+            })
+
+
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+vue商城数据库管理系统
+
+数据库名称：myshop
+
+表1：一级分类表class1
+
+字段名            类型/长度              备注
+
+id                tinyint                 主键，自动增量，无符号
+
+c1name            char(10)                一级分类名称
+
+
+表2：二级分类表class2
+
+字段名            类型/长度              备注
+
+id                smallint                 主键，自动增量，无符号
+
+cid               tinyint                 对应的一级分类ID,索引
+
+c2name            varchar(20)             二级分类名称
+
+
+表3：产品表product
+
+字段名            类型/长度              备注
+
+id                mediumint              主键，自动增量，无符号
+
+c1id              tinyint                一级分类ID ，索引
+
+c2id              smallint               二级分类ID，索引
+
+title             varchar(100)           产品名称
+
+price             decimal(8,2)           价格
+
+promotion         varchar(20)            促销（a:一站式换新；b:整点赠礼；c:商品赠券；d:分期免息；e;赠送积分）
+
+color             varchar(100)           颜色
+
+descript          tinytext               详情
+
+dt                 bigint                上架日期
+
+
+表4：产品封面表poster
+
+
+字段名            类型/长度              备注
+
+id                mediumint              主键，自动增量，无符号
+
+pid               mediumint              产品ID
+
+url               char                   封面地址
+
+
+表5：用户名表user
+
+id                smallint               主键，自动增量，无符号
+
+username          varchar(20)            用户名
+
+pwd               char(30)               密码
+
+name              char(5)                姓名
+
+tel               char(11)               手机号
+
+address           varchar(100)           收货地址
+
+photo             char(100)              头像地址
+
+
+表6：订单表orders
+
+id                int               主键，自动增量，无符号
+
+sn                char(50)          订单编号
+
+uid               smallint          谁买的
+
+pid               mediumint         买的产品
+
+counts            smallint          数量
+
+dt                bigint            下单日期
+
+

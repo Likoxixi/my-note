@@ -7,6 +7,9 @@
   router.get("/login",ctx=>{
       ctx.render("login")
   })
+  router.post("/loginDo",ctx=>{
+    console.log(ctx.request.body);
+  })
 
 
       

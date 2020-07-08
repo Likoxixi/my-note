@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户列表</title>
+</head>
+
+<body>
+    <div>
+        <table>
+            <tr>
+                <td>id</td>
+                <td>用户名</td>
+                <td>姓名</td>
+                <td>电话</td>
+                <td>操作</td>
+            </tr>
+            {{each val}}
+            <tr>
+                
+                <th>{{$value.id}}</th>
+                <th>{{$value.user_name}}</th>
+                <th>{{$value.name}}</th>
+                <th>{{$value.tel}}</th>
+                <th>删除</th>
+              
+            </tr>
+            {{/each}}
+        </table>
+    </div>
+</body>
+
+</html>
